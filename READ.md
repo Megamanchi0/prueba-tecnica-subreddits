@@ -1,5 +1,7 @@
 # 🚀 Full Stack App – Next.js + Express + MySQL + Prisma
 
+URL desplegado = https://subreddits-front-production.up.railway.app
+
 Este proyecto es una aplicación full-stack que utiliza:
 
 - **Frontend:** Next.js (React)
