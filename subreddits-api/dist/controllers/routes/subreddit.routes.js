@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.subredditRouter = void 0;
+const express_1 = require("express");
+const subreddits_controller_1 = require("../subreddits.controller");
+exports.subredditRouter = (0, express_1.Router)();
+exports.subredditRouter.get('/all/:page', subreddits_controller_1.getSubreddits);
+exports.subredditRouter.get('/save', subreddits_controller_1.saveSubredditsOnDB);
+exports.subredditRouter.get('/findone/:id', subreddits_controller_1.getSubredditById);
+exports.subredditRouter.get('/pages', subreddits_controller_1.getPages);
+exports.subredditRouter.delete('/', subreddits_controller_1.deleteSubreddits);
+exports.default = exports.subredditRouter;

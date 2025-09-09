@@ -1,0 +1,44 @@
+node_modules
+# Keep environment variables out of version control
+
+/subreddits-api/src/generated/prisma
+/subreddits-api/node_modules
+/subreddits-api/.firebase/
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+/subreddits-front/node_modules
+/subreddits-front/.pnp
+/subreddits-front.pnp.*
+/subreddits-front.yarn/*
+/subreddits-front!.yarn/patches
+/subreddits-front!.yarn/plugins
+/subreddits-front!.yarn/releases
+/subreddits-front!.yarn/versions
+
+# testing
+/subreddits-front/coverage
+
+# next.js
+/subreddits-front/.next/
+/subreddits-front/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# vercel
+/subreddits-front/.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

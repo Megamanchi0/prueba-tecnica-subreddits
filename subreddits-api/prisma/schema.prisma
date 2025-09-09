@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Subreddit {
+  id                  String   @id @db.VarChar(20)
+  name                String   @db.VarChar(100)
+  title               String?  @db.VarChar(255)
+  description         String?  @db.Text
+  public_description  String?  @db.Text
+  icon_img            String?  @db.Text
+  banner_img          String?  @db.Text
+  lang                String?  @db.VarChar(10)
+  subscribers         Int?
+  created_utc         Int?
+
+  spoilers_enabled    Boolean?
+  wiki_enabled        Boolean?
+  emojis_enabled      Boolean?
+  over18              Boolean?
+  public_traffic      Boolean?
+  allow_videos        Boolean?
+  allow_galleries     Boolean?
+  restrict_posting    Boolean?
+  mobile_banner_image String? @db.VarChar(500)
+
+  allowed_media_in_comments     SubredditMediaTypes[]
+}
+
+model MediaTypes {
+  id                  Int      @id @default(autoincrement())
+  name                String   @unique @db.VarChar(50)
+
+  allowed_media_in_comments     SubredditMediaTypes[]
+}
+
+model SubredditMediaTypes {
+  subreddit_id    String
+  media_type_id   Int
+
+  subreddit       Subreddit   @relation(fields: [subreddit_id], references: [id], onDelete: Cascade)
+  mediaType       MediaTypes  @relation(fields: [media_type_id], references: [id], onDelete: Cascade)
+
+  @@id([subreddit_id, media_type_id])
+}
